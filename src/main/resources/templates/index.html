@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Home Page</title>
+    <div th:replace="fragments/header :: header-css"></div>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+
+    <h1>Home Page</h1>
+    <br/><br/>
+    <ul> <!-- unordered list -->
+        <li> <!-- list item -->
+            <a th:href="@{/file}">Upload Files to Database </a> <!-- anchor (link) -->
+        </li>
+    </ul>
+
+</div>
+    <script type="text/javascript">
+                function clearSearch() {
+                    window.location = "[[@{/}]]";
+                }
+    </script>
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

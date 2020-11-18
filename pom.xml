@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<javax.servlet>2.5</javax.servlet>
+		<spring.data.jpa>2.4.1</spring.data.jpa>
+		<hibernate>5.4.23.Final</hibernate>
 	</properties>
 
 	<dependencies>
@@ -74,6 +77,22 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.jpa}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate}</version>
 		</dependency>
 	</dependencies>
 
