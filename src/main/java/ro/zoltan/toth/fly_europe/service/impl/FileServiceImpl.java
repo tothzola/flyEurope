@@ -2,8 +2,8 @@ package ro.zoltan.toth.fly_europe.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.zoltan.toth.fly_europe.domain.Country;
-import ro.zoltan.toth.fly_europe.repository.CountryRepository;
+import ro.zoltan.toth.fly_europe.domain.Flight;
+import ro.zoltan.toth.fly_europe.repository.FlightRepository;
 import ro.zoltan.toth.fly_europe.service.FileService;
 
 import java.io.BufferedReader;
@@ -20,7 +20,10 @@ import java.util.stream.Collectors;
 public class FileServiceImpl implements FileService {
 
     @Autowired
-    private CountryRepository countryRepository;
+    private FlightRepository flightRepository;
+
+    @Autowired
+    private FlightRepository airlineRepository;
 
     @Override
     public List<String> readContent(final String fileName) {
@@ -40,40 +43,42 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public List<Country> transformContent(final List<String> content) {
+    public List<Flight> transformContent(final List<String> content) {
         return content.stream()
                 .map(element -> transformElement(element))
                 .collect(Collectors.toList());
     }
 
-    private Country transformElement(final String element) {
+    private Flight transformElement(final String element) {
         final String[] parts = element.trim().replaceAll("\"", "").split(";");
-        final Country country = new Country();
+        final Flight flight = new Flight();
 
-//        airport.setName(parts[0]);
-//        airport.setCity(parts[1]);
-//        airport.setCountry(parts[2]);
-//        airport.setIata(parts[3]);
-//        airport.setIcao(parts[4]);
-//        airport.setMapUrl(parts[5]);
-//        return airport;
+//        @Column(name = "flight_no")
+//        private String flightNo;
+//
+//        @ManyToOne(targetEntity = Airline.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//        @JoinColumn(name = "airline_id", nullable = false)
+//        private Airline airline;
+//
+//        @ManyToOne(targetEntity = Airport.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//        @JoinColumn(name = "departure_airport_id", nullable = false)
+//        private Airport departureAirport;
+//
+//        @ManyToOne(targetEntity = Airport.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//        @JoinColumn(name = "arrival_airport_id", nullable = false)
+//        private Airport arrivalAirport;
+//
+//        @ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//        @JoinColumn(name = "country_id", nullable = false)
+//        private Airline country;
 
-//        airline.setName(parts[0]);
-//        airline.setIcao(parts[1]);
-//        airline.setCallSign(parts[2]);
-//        airline.setCountry(parts[3]);
-//        return airline;
+        return flight;
 
-        country.setCode(parts[0]);
-        country.setName(parts[1]);
-        country.setWiki(parts[2]);
-
-        return country;
    }
 
     @Override
-    public boolean insertAll(List<Country> countries) {
-    return countryRepository.saveAll(countries).stream()
+    public boolean insertAll(List<Flight> flights) {
+    return flightRepository.saveAll(flights).stream()
                 .map(a -> a.getId() > 0)
                 .reduce(true, (p, q) -> p && q);
     }

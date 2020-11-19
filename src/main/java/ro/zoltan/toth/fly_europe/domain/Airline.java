@@ -11,17 +11,18 @@ public class Airline {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "callSign")
+    private String callSign;
 
     @Column(name = "icao", length = 3)
     private String icao;
 
-    @Column(name = "callSign")
-    private String callSign;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "country")
-    private String country;
+    @ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
 
     public long getId() {
         return id;
@@ -55,11 +56,11 @@ public class Airline {
         this.callSign = callSign;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 }

@@ -1,6 +1,6 @@
 package ro.zoltan.toth.fly_europe.service;
 
-import ro.zoltan.toth.fly_europe.domain.Country;
+import ro.zoltan.toth.fly_europe.domain.Flight;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ public interface FileService {
 
     List<String> readContent(String fileName);
 
-    List<Country> transformContent(List<String> content);
+    List<Flight> transformContent(List<String> content);
 
-    boolean insertAll(List<Country> countries);
+    boolean insertAll(List<Flight> flights);
 
 }
