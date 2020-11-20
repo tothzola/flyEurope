@@ -32,12 +32,12 @@ public class Airline {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCallSign() {
+        return callSign;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCallSign(String callSign) {
+        this.callSign = callSign;
     }
 
     public String getIcao() {
@@ -48,12 +48,12 @@ public class Airline {
         this.icao = icao;
     }
 
-    public String getCallSign() {
-        return callSign;
+    public String getName() {
+        return name;
     }
 
-    public void setCallSign(String callSign) {
-        this.callSign = callSign;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Country getCountry() {

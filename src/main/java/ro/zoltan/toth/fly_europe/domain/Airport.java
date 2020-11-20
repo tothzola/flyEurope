@@ -14,10 +14,6 @@ public class Airport {
     @Column(name = "city")
     private String city;
 
-    @ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "country_id", nullable = false)
-    private Country country;
-
     @Column(name = "iata", length = 3)
     private String iata;
 
@@ -30,6 +26,10 @@ public class Airport {
     @Column(name = "name")
     private String name;
 
+    @ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
+
     public long getId() {
         return id;
     }
@@ -38,28 +38,12 @@ public class Airport {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
     }
 
     public String getIata() {
@@ -84,5 +68,21 @@ public class Airport {
 
     public void setMapUrl(String mapUrl) {
         this.mapUrl = mapUrl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
