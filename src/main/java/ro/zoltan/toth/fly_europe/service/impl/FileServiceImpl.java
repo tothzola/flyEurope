@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +21,6 @@ public class FileServiceImpl implements FileService {
     @Autowired
     private FlightRepository flightRepository;
 
-    @Autowired
-    private FlightRepository airlineRepository;
-
     @Override
     public List<String> readContent(final String fileName) {
         final List<String> result = new ArrayList<>();
@@ -34,8 +30,6 @@ public class FileServiceImpl implements FileService {
             while ((line = br.readLine()) != null) {
                 result.add(line);
             }
-        } catch (MalformedURLException e) {
-            System.err.println(e.getMessage());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -45,33 +39,13 @@ public class FileServiceImpl implements FileService {
     @Override
     public List<Flight> transformContent(final List<String> content) {
         return content.stream()
-                .map(element -> transformElement(element))
+                .map(this::transformElement)
                 .collect(Collectors.toList());
     }
 
     private Flight transformElement(final String element) {
         final String[] parts = element.trim().replaceAll("\"", "").split(";");
         final Flight flight = new Flight();
-
-//        @Column(name = "flight_no")
-//        private String flightNo;
-//
-//        @ManyToOne(targetEntity = Airline.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//        @JoinColumn(name = "airline_id", nullable = false)
-//        private Airline airline;
-//
-//        @ManyToOne(targetEntity = Airport.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//        @JoinColumn(name = "departure_airport_id", nullable = false)
-//        private Airport departureAirport;
-//
-//        @ManyToOne(targetEntity = Airport.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//        @JoinColumn(name = "arrival_airport_id", nullable = false)
-//        private Airport arrivalAirport;
-//
-//        @ManyToOne(targetEntity = Country.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//        @JoinColumn(name = "country_id", nullable = false)
-//        private Airline country;
-
         return flight;
 
    }

@@ -20,7 +20,7 @@ public class Airport {
     @Column(name = "icao", length = 4)
     private String icao;
 
-    @Column(name = "mapUrl")
+    @Column(name = "map_url")
     private String mapUrl;
 
     @Column(name = "name")

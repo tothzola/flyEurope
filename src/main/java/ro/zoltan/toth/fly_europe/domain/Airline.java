@@ -11,7 +11,7 @@ public class Airline {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "callSign")
+    @Column(name = "call_sign")
     private String callSign;
 
     @Column(name = "icao", length = 3)
