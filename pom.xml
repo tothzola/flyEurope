@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ro.zoltan.toth</groupId>
 	<artifactId>fly_europe</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>fly_europe</name>
 	<description>Demo Web Application which displays airports, airlines and flights from the European continent. </description>
 
