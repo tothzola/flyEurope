@@ -5,11 +5,10 @@
 
 <head>
     <div th:fragment="header-css">
-        <!-- this is header-css -->
+        <!-- this is the header-css -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Fly the Continent of Europe</title>
-
+        <title>Fly Europe</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     </div>
@@ -19,7 +18,7 @@
 
 <div th:fragment="header">
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <a class="navbar-brand" th:href="@{/}">Fly Europe</a>
+        <a class="navbar-brand" th:href="@{/}">Fly the Continent of Europe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,13 +27,23 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">Home</a>
+                    <a class="nav-link" th:href="@{/}">Search</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/search}">Search</a>
+                    <a class="nav-link" th:href="@{/airlines}">Airlines</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/login}">Sign In</a>
+                    <a class="nav-link" th:href="@{/airports}">Airports</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/countries}">Countries</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/flights}">Flights</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">Sign In</a>
+                    <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">Sign Out</a>
                 </li>
             </ul>
         </div>

@@ -10,7 +10,7 @@
 <div th:fragment="footer">
 
     <footer class="container py-5">
-        <!-- this is footer -->
+        <!-- this is the footer -->
         <div class="row">
             <div class="col-md-12">
                 <p class="text-muted">&copy; 2020 Fly in Europe. All rights reserved. Developed by Zoltan
@@ -18,7 +18,8 @@
                 <span sec:authorize="isAuthenticated()">
                                     | Logged user: <span sec:authentication="name"></span> |
                                     Roles: <span sec:authentication="principal.authorities"></span> |
-                                    <a th:href="@{/logout}">Sign Out</a>
+                                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Sign In</a>
+                                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Sign Out</a>
                                 </span>
             </div>
         </div>

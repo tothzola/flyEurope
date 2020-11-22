@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
-<!--"@{/airport/} + ${a.id}"-->
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="ISO-8859-1">
@@ -15,16 +14,32 @@
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container">
-    <h1>Airports</h1>
-    <a th:href="@{/new}">Add New Airport</a>
+    <br/><br/>
+    <h1>=== Place for Picture ===</h1>
+    <br/>
+    <h2>Airports</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{/new}" sec:authorize="hasRole('administrator')">Add New Airport</a>
     <br/><br/>
     <form th:action="@{/search}" method="post">
-        Search by Name, Country or City:
-        <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
-        &nbsp;
-        <input type="submit" value="Search"/>
-        &nbsp;
-        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+        <h2>Search for a destination</h2>
+        <br/>
+        <div class="input-group">
+            <input type="search" class="form-control" name="keyword" id="keyword" size="25" th:value="${keyword}"
+                   autofocus="autofocus" placeholder="Country, City or Airport">
+            <div pseudo="-webkit-textfield-decoration-container">
+                <div pseudo="-webkit-search-decoration"></div>
+                <div>
+                    <div contenteditable="plaintext-only"></div>
+                </div>
+                <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
+            </div>
+            </input>
+        </div>
+        <br/>
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary" aria-label="Search">
+                Search
+            </button>
+        </div>
     </form>
     <br/><br/>
     <table border="1" cellpadding="10">
@@ -45,17 +60,19 @@
             <th>
                 <a th:href="@{'/page/' + ${currentPage} + '?sortField=iata&sortDir=' + ${reverseSortDir}}">IATA</a>
             </th>
-            <th>Actions</th>
+            <th sec:authorize="hasRole('administrator')">Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="airport : ${listAirports}">
             <td th:text="${airport.id}">ID</td>
-            <td th:text="${airport.name}">Name</td>
-            <td th:text="${airport.country}">Country</td>
+            <td>
+                <a th:href="@{'/airport/' + ${airport.id}}" th:text="${airport.name}">Name</a>
+            </td>
+            <td th:text="${airport.country.getName}">Country</td>
             <td th:text="${airport.city}">City</td>
             <td th:text="${airport.iata}">IATA</td>
-            <td>
+            <td sec:authorize="hasRole('administrator')">
                 <a th:href="@{'/edit/' + ${airport.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/delete/' + ${airport.id}}">Delete</a>
@@ -90,12 +107,7 @@
         <span th:unless="${currentPage < totalPages}">Last</span>
     </div>
 </div>
-<script type="text/javascript">
-            function clearSearch() {
-                window.location = "[[@{/}]]";
-            }
 
-</script>
 <div th:replace="fragments/footer :: footer"></div>
 
 </body>

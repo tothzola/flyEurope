@@ -7,4 +7,6 @@ import ro.zoltan.toth.fly_europe.domain.Country;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
+
+
 }
