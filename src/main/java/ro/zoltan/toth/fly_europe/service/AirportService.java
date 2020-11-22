@@ -6,7 +6,9 @@ import ro.zoltan.toth.fly_europe.payload.AirportPayload;
 
 public interface AirportService {
 
-    Page<Airport> search(int pageNum, String sortField, String sortDir, String keyword);
+    Page<Airport> searchByCountry(int pageNum, String sortField, String sortDir, String keyword);
+
+    Page<Airport> searchByNameAndCity(int pageNum, String sortField, String sortDir, String keyword);
 
     Page<Airport> listAll(int pageNum, String sortField, String sortDir);
 

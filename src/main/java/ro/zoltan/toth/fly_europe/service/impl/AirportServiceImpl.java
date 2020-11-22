@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import ro.zoltan.toth.fly_europe.domain.Airport;
 import ro.zoltan.toth.fly_europe.payload.AirportPayload;
 import ro.zoltan.toth.fly_europe.repository.AirportRepository;
+import ro.zoltan.toth.fly_europe.repository.CountryRepository;
 import ro.zoltan.toth.fly_europe.service.AirportService;
 
 @Service
@@ -17,11 +18,19 @@ public class AirportServiceImpl implements AirportService {
     @Autowired
     private AirportRepository airportRepository;
 
+    @Autowired
+    private CountryRepository countryRepository;
+
     @Override
-    public Page<Airport> search(int pageNum, String sortField, String sortDir, String keyword) {
+    public Page<Airport> searchByCountry(int pageNum, String sortField, String sortDir, String keyword) {
+        return null;
+    }
+
+    @Override
+    public Page<Airport> searchByNameAndCity(int pageNum, String sortField, String sortDir, String keyword) {
         Pageable pageable = PageRequest.of(pageNum - 1, 10,
                 sortDir.equals("asc") ? Sort.by(sortField).ascending() : Sort.by(sortField).descending());
-        return airportRepository.findAllByNameContainingOrCountryContainingOrCityContaining(keyword, keyword, keyword, pageable);
+        return airportRepository.findAllByNameContainingOrCityContaining(keyword, keyword, pageable);
     }
 
     @Override
@@ -35,9 +44,7 @@ public class AirportServiceImpl implements AirportService {
     public Airport createAirport(final String name) {
         final Airport airport = new Airport();
         airport.setName(name);
-//        final Airport savedAirport = airportRepository.save(airport);
-//        return savedAirport;
-        return  airportRepository.save(airport); // metoda save are efecte secundare - modifica obiectul transmis ca parametru
+        return  airportRepository.save(airport);
     }
 
     @Override
@@ -55,7 +62,7 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public Airport get(Long id) {
-        return airportRepository.findById(id).get();
+        return airportRepository.findById(id).orElseThrow();
     }
 
     @Override

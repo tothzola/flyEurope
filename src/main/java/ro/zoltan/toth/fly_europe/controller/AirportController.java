@@ -35,7 +35,7 @@ public class AirportController {
         String sortField = "id";
         String sortDir = "asc";
 
-        Page<Airport> page = airportService.search(pageNum, sortField, sortDir, keyword);
+        Page<Airport> page = airportService.searchByNameAndCity(pageNum, sortField, sortDir, keyword);
         List<Airport> listAirports = page.getContent();
 
         model.addAttribute("currentPage", pageNum);

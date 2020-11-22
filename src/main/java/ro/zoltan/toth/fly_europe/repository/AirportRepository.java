@@ -12,8 +12,16 @@ import java.util.List;
 @Repository
 public interface AirportRepository extends JpaRepository<Airport, Long> {
 
+    /*
+    select a."name", c."name" , a.city from airports a inner join countries c on a.country_id = c.id where c.id = 41
+     */
+
     @Query("SELECT a FROM Airport a WHERE CONCAT(a.name, ' ', a.country, ' ', a.city, ' ') LIKE %?1%")
     List<Airport> search(String keyword);
+
+    Page<Airport> findByCountryId(Long id, Pageable pageable);
+
+    Page<Airport> findAllByNameContainingOrCityContaining(String name, String city, Pageable pageable);
 
     Page<Airport> findAllByNameContainingOrCountryContainingOrCityContaining(String name, String country,
                                                                              String city, Pageable pageable);
