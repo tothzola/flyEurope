@@ -73,7 +73,7 @@
             <td th:text="${airport.city}">City</td>
             <td th:text="${airport.iata}">IATA</td>
             <td sec:authorize="hasRole('administrator')">
-                <a th:href="@{'/edit/' + ${airport.id}}">Edit</a>
+                <a th:href="@{'/airport/' + ${airport.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{'/delete/' + ${airport.id}}">Delete</a>
             </td>

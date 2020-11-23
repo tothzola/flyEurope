@@ -41,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         final String[] staticContent = {"/css/**", "/images/**"};
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/search", "/airport*/**", "/flight", "/page/**").permitAll()
+                .antMatchers("/", "/index", "/page/**", "/search", "/airlines", "/airport*/**", "/countries", "/flights").permitAll()
                 .antMatchers(staticContent).permitAll()
                 .antMatchers("/**").hasAnyRole("administrator")
                 .anyRequest().authenticated()

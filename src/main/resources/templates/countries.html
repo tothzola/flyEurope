@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="ISO-8859-1">
+    <title>Countries Page</title>
+    <div th:replace="fragments/header :: header-css"></div>
 </head>
+
 <body>
 
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <br/><br/>
+    <h1>=== Place for Picture ===</h1>
+    <br/>
+    <h2>Countries</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <br/><br/>
+
+</div>
+
 </body>
+
+<div th:replace="fragments/footer :: footer"></div>
+
 </html>
