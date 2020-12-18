@@ -1,22 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
     <title>Home Page</title>
     <div th:replace="fragments/header :: header-css"></div>
+    <style>
+        .home-page {
+                max-width: 600px;
+                max-height: 50vh;
+                position: absolute;
+                top: 80px;
+                left: 30px;
+                opacity: 1;
+                padding: 20px;
+                background: white;
+                border-radius: 7px;
+            }
+        html {
+            background: url('images/flight-background.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            }
+    </style>
 </head>
 
 <body>
 
 <div th:replace="fragments/header :: header"></div>
-
-<div class="container">
+    <img class="img-home" src = "../static/images/flight-background.jpg" th:src="@{images/flight-background.jpg}">
+<div class="home-page">
     <br/><br/>
-
-    <h1>=== Place for Picture ===</h1>
     <br/>
     <form th:action="@{/search}" method="post">
         <h2>Search for a destination</h2>
