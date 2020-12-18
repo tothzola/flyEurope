@@ -8,59 +8,43 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <div th:replace="fragments/header :: header-css"></div>
-    <style>
-        .home-page {
-                max-width: 600px;
-                max-height: 50vh;
-                position: absolute;
-                top: 80px;
-                left: 30px;
-                opacity: 1;
-                padding: 20px;
-                background: white;
-                border-radius: 7px;
-            }
-        html {
-            background: url('images/flight-background.jpg') no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/layout.css}" href="../../static/css/layout.css">
 </head>
 
 <body>
 
 <div th:replace="fragments/header :: header"></div>
-    <img class="img-home" src = "../static/images/flight-background.jpg" th:src="@{images/flight-background.jpg}">
-<div class="home-page">
-    <br/><br/>
-    <br/>
-    <form th:action="@{/search}" method="post">
-        <h2>Search for a destination</h2>
-        <br/>
-        <div class="input-group">
-            <input type="search" class="form-control" name="keyword" id="keyword" size="25" th:value="${keyword}"
-                   autofocus="autofocus" placeholder="City or Airport">
-            <div pseudo="-webkit-textfield-decoration-container">
-                <div pseudo="-webkit-search-decoration"></div>
-                <div>
-                    <div contenteditable="plaintext-only"></div>
-                </div>
-                <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
-            </div>
-            </input>
-        </div>
-        <br/>
-        <div class="input-group-btn">
-            <button type="submit" class="btn btn-primary" aria-label="Search">
-                Search
-            </button>
-        </div>
-    </form>
 
+<div class="img">
+    <img src="../static/images/flight-background.jpg" th:src="@{images/flight-background.jpg}">
 </div>
+
+    <div class="home-page">
+        <form th:action="@{/search}" method="post">
+            <div class="form-floating">
+                <input class="form-control mr-sm-2"
+                       name="keyword"
+                       id="keyword"
+                       size="25"
+                       th:value="${keyword}"
+                       autofocus="autofocus"
+                       placeholder="Search Country or City"
+                       type="search">
+                <div pseudo="-webkit-textfield-decoration-container">
+                    <div pseudo="-webkit-search-decoration"></div>
+                    <div>
+                        <div contenteditable="plaintext-only"></div>
+                    </div>
+                    <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
+                </div>
+                </input>
+                <button class="btn btn-outline-success"
+                        aria-label="Search"
+                        type="submit">
+                    Search</button>
+            </div>
+        </form>
+    </div>
 
 <div th:replace="fragments/footer :: footer"></div>
 

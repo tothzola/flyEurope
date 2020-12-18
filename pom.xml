@@ -2,23 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repository.spring.release</id>
-			<name>Spring GA Repository</name>
-			<url>https://repo.spring.io/plugins-release/</url>
-		</pluginRepository>
-	</pluginRepositories>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+
 	<groupId>ro.zoltan.toth</groupId>
 	<artifactId>fly_europe</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<name>fly_europe</name>
+
 	<description>Demo Web Application which displays airports, airlines and flights from the European continent. </description>
 
 	<properties>
@@ -29,6 +18,14 @@
 		<spring.data.jpa>2.4.1</spring.data.jpa>
 		<hibernate>5.4.26.Final</hibernate>
 	</properties>
+
+	<!-- Inherit defaults from Spring Boot -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
 	<dependencies>
 		<dependency>
