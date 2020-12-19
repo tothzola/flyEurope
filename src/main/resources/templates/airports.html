@@ -62,32 +62,33 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
 
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" th:if="${currentPage > 1}"
                     th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >First</a>
                 <span class="page-link" th:unless="${currentPage > 1}">First</span>
             </li>
 
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" th:if="${currentPage > 1}"
                     th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Previous</a>
                 <span class="page-link" th:unless="${currentPage > 1}">Previous</span>
             </li>
 
-            <li class="page-item">
-                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                <a class="page-link" th:if="${currentPage != i}"
-                   th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
-                <span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span></span>
-            </li>
+            <!--Part to rethink rebuild-->
+<!--            <li class="page-item">-->
+<!--                <span th:each="i: ${#numbers.sequence(1, totalPages)}">-->
+<!--                <a class="page-link" th:if="${currentPage != i}"-->
+<!--                   th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>-->
+<!--                <span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span></span>-->
+<!--            </li>-->
 
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" th:if="${currentPage < totalPages}"
                     th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Next</a>
                 <span class="page-link" th:unless="${currentPage < totalPages}">Next</span>
             </li>
 
-            <li class="page-item disabled">
+            <li class="page-item">
                 <a class="page-link" th:if="${currentPage < totalPages}"
                     th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Last</a>
                 <span class="page-link" th:unless="${currentPage < totalPages}">Last</span>
