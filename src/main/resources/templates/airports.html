@@ -16,10 +16,13 @@
 <div th:replace="fragments/header :: header"></div>
 
 <div class="img">
-    <img src="../static/images/airport-background.jpeg" th:src="@{images/airport-background.jpeg}">
+    <img style="float:initial; display:block; margin-left: auto; margin-right: auto;"
+         src="../static/images/airport-background.jpeg"
+         th:src="@{images/airport-background.jpeg}">
 </div>
 
 <div class="container">
+    <div class="form-floating">
     <h2>Airports</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{/new}" sec:authorize="hasRole('administrator')">Add New Airport</a>
     <table class="table table-sm">
         <thead>
@@ -100,6 +103,7 @@
 
         </ul>
     </nav>
+    </div>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
