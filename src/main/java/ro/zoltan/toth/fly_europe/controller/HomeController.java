@@ -49,7 +49,6 @@ public class HomeController {
         model.addAttribute("listAirports", listAirports);
 
         return "index";
-
     }
 
     @RequestMapping("/page/{pageNum}")

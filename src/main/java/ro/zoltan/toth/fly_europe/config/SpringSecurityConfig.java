@@ -38,10 +38,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     // custom 403 access denied handler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        final String[] staticContent = {"/css/**", "/images/**"};
-        http
+        final String[] staticContent = {"/css/**", "/images/**", "/js/**", "/assets/**"};
+            http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/page/**", "/search", "/airlines", "/airport*/**", "/countries", "/flights").permitAll()
+                .antMatchers("/", "/index", "/search", "/page/**", "/airlines", "/airport*/**", "/flights").permitAll()
                 .antMatchers(staticContent).permitAll()
                 .antMatchers("/**").hasAnyRole("administrator")
                 .anyRequest().authenticated()

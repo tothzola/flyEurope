@@ -12,11 +12,8 @@
 </head>
 
 <body>
-
 <div th:replace="fragments/header :: header"></div>
-
     <div class="home-page"></div>
-
     <div class="search-form">
         <form th:action="@{/search}" method="post">
             <input class="form-control mr-sm-2" name="keyword" id="keyword"
@@ -28,13 +25,16 @@
                 <div contentEditable="true"></div>
                 <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
             </div>
-
             <button class="btn btn-success btn-sm btn-block" aria-label="Search" type="submit">Search</button>
         </form>
     </div>
 
     <div class="airports-list">
-        <h2>List of Airports</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{/new}" sec:authorize="hasRole('administrator')">Add New Airport</a>
+        <h2 style="text-align:right">List of Airports</h2>
+        <div class="row" style="padding: 10px 15px;"><button class="btn btn-primary btn-sm"
+                th:href="@{/new}" sec:authorize="hasRole('administrator')">
+                Insert New Airport</button>
+        </div>
         <table class="table table-sm">
             <thead>
                 <tr>
@@ -74,8 +74,10 @@
             </tbody>
         </table>
 
-        <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
-        <div th:if="${totalPages > 1}">Total Items: [[${totalItems}]]</div>
+        <div class="row" style="padding: 5px 18px; font-size:12px;">
+            <p>Sorted by <b>[[${sortField}]]</b> in <b>[[${sortDir}]]</b> order. </p>
+            <p th:if="${totalPages > 1}">&nbsp;&nbsp;&nbsp;&nbsp;Total Items: <b>[[${totalItems}]]</b></p>
+        </div>
 
         <nav>
             <ul class="pagination justify-content-center">
@@ -114,6 +116,7 @@
 
             </ul>
         </nav>
+
     </div>
 
 <div th:replace="fragments/footer :: footer"></div>

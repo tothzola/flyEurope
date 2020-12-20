@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <title>Login</title>
     <div th:replace="fragments/header :: header-css"></div>
+    <link rel="stylesheet" th:href="@{/css/layout.css}" href="../../static/css/layout.css">
 </head>
 
 <body>
-
 <div th:replace="fragments/header :: header"></div>
-
-<div class="container">
-    <br/><br/>
-    <h1>=== Place for Picture ===</h1>
-    <br/>
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form th:action="@{/login}" method="post">
-                <fieldset>
-                    <h2>Please Sign In</h2>
+<div class="login-page"></div>
+<div class="login-form">
+    <div class="col-xs-12">
+        <form th:action="@{/login}" method="post">
+            <fieldset>
+                <h2>Please Sign In</h2>
                     <div th:if="${param.error}">
                         <div class="alert alert-danger">
                             Invalid username and password.
@@ -37,16 +36,11 @@
                         <input class="form-control" placeholder="Password" id="password" name="password"
                                type="password" data-toggle="password"/>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                        </div>
+                    <div class="col-xs-12">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
                     </div>
-                </fieldset>
-            </form>
-        </div>
+            </fieldset>
+        </form>
     </div>
 </div>
 
