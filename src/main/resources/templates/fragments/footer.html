@@ -7,30 +7,22 @@
     <link rel="stylesheet" th:href="@{/css/layout.css}" href="../../static/css/layout.css">
 </head>
 
-<body>
-
+<body><!-- this is the footer -->
 <div th:fragment="footer">
-
     <footer class="navbar fixed-bottom">
-        <!-- this is the footer -->
-        <div class="row">
-            <div class="container-fluid">
-                <p class="navbar-brand">&copy; 2020 Fly in Europe. All rights reserved. Developed by Zoltàn Tòth</p>
-                <span sec:authorize="isAuthenticated()">
-                    | Logged user: <span sec:authentication="name"></span> |
-                    Roles: <span sec:authentication="principal.authorities"></span> |
-                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Sign In</a>
-                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Sign Out</a>
-                </span>
-            </div>
+        <div class="container-fluid">
+            <p> &copy; 2020 Fly in Europe. All rights reserved. Developed by Zoltàn Tòth. </p>
+            <p><span sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/login}" sec:authorize="isAnonymous()">Sign In</a>
+                <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Sign Out</a>
+            </span></p>
         </div>
         <th:block th:fragment="optional">
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+            <script src="../../static/js/jquery.min.js"></script>
         </th:block>
     </footer>
-
 </div>
-
 </body>
-
 </html>

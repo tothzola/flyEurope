@@ -1,28 +1,56 @@
-        .home-page {
-            max-width: 600px;
-            max-height: 600vh;
-            position: absolute;
-            top: 300px;
-            left: 600px;
-            opacity: 0.9;
-            padding: 20px;
-            background: white;
-            border-radius: 9px;
-        }
-        .img {
-            padding: 0;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            height: 100%;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .footer {
-            position: absolute;
-            margin-top: -150px; /* negative value of footer height */
-            height: 150px;
-            width: 100%;
-            clear:both;
-            padding-top:20px;
-        }
+
+body, html {
+    height: 100%;
+}
+
+.home-page {
+    /* The image used */
+    background-image: url("../images/home-page-background.jpeg");
+    /* Add the blur effect */
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    opacity: 0.5;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Add styles to the search-form container */
+.search-form {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    position: absolute;
+    top:5%;
+    padding: 10px;
+    opacity: 0.8;
+    border-radius: 9px;
+    z-index: 2;
+    margin: 20px;
+    max-width: 300px;
+}
+
+/* Add styles to the airports-list container */
+.airports-list {
+    background-color: white;
+    margin: 0;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 30px;
+    opacity: 0.9;
+    font-size: 18px;
+    border-radius: 9px;
+    z-index: 2;
+}
+
+.footer {
+    position: fixed;
+    margin-top: -150px; /* negative value of footer height */
+    height: 150px;
+}

@@ -18,7 +18,8 @@
 <body>
 
 <div th:fragment="header">
-    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
+<!--    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">-->
+     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/}">Fly the Continent of Europe</a>
             <button class="navbar-toggler"
@@ -33,16 +34,10 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Search</a>
+                        <a class="nav-link" th:href="@{/}">Home</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/airlines}">Airlines</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/airports}">Airports</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/countries}">Countries</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" th:href="@{/flights}">Flights</a>

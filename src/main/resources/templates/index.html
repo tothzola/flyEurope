@@ -15,37 +15,105 @@
 
 <div th:replace="fragments/header :: header"></div>
 
-<div class="img-home-page">
-    <img style="float:initial; display:block; margin-left: auto; margin-right: auto;"
-         src="../static/images/home-page-background.jpeg"
-         th:src="@{images/home-page-background.jpeg}">
-</div>
+    <div class="home-page"></div>
 
-    <div class="home-page">
+    <div class="search-form">
         <form th:action="@{/search}" method="post">
-            <div class="form-floating">
-                <input class="form-control mr-sm-2"
-                       name="keyword"
-                       id="keyword"
-                       size="25"
-                       th:value="${keyword}"
-                       autofocus="autofocus"
-                       placeholder="Search Country or City"
-                       type="search">
-                <div pseudo="-webkit-textfield-decoration-container">
-                    <div pseudo="-webkit-search-decoration"></div>
-                    <div>
-                        <div contenteditable="plaintext-only"></div>
-                    </div>
-                    <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
-                </div>
-                </input>
-                <button class="btn btn-outline-primary"
-                        aria-label="Search"
-                        type="submit">
-                    Search</button>
+            <input class="form-control mr-sm-2" name="keyword" id="keyword"
+                   size="25" th:value="${keyword}" autofocus="autofocus"
+                   placeholder="Search Country or City" type="search">
+
+            <div pseudo="-webkit-textfield-decoration-container">
+                <div pseudo="-webkit-search-decoration"></div>
+                <div contentEditable="true"></div>
+                <div pseudo="-webkit-search-cancel-button" aria-label="cancel" role="button"></div>
             </div>
+
+            <button class="btn btn-success btn-sm btn-block" aria-label="Search" type="submit">Search</button>
         </form>
+    </div>
+
+    <div class="airports-list">
+        <h2>List of Airports</h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{/new}" sec:authorize="hasRole('administrator')">Add New Airport</a>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=country&sortDir=' + ${reverseSortDir}}">Country</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=city&sortDir=' + ${reverseSortDir}}">City</a>
+                    </th>
+                    <th>
+                        <a th:href="@{'/page/' + ${currentPage} + '?sortField=iata&sortDir=' + ${reverseSortDir}}">IATA</a>
+                    </th>
+                    <th sec:authorize="hasRole('administrator')">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="airport : ${listAirports}">
+                    <td th:text="${airport.id}">ID</td>
+                    <td>
+                        <a th:href="@{'/airport/' + ${airport.id}}" th:text="${airport.name}">Name</a>
+                    </td>
+                    <td th:text="${airport.country.getName}">Country</td>
+                    <td th:text="${airport.city}">City</td>
+                    <td th:text="${airport.iata}">IATA</td>
+                    <td sec:authorize="hasRole('administrator')">
+                        <a th:href="@{'/airport/' + ${airport.id}}">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/delete/' + ${airport.id}}">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+        <div th:if="${totalPages > 1}">Total Items: [[${totalItems}]]</div>
+
+        <nav>
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage > 1}"
+                       th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >First</a>
+                    <span class="page-link" th:unless="${currentPage > 1}">First</span>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage > 1}"
+                       th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Previous</a>
+                    <span class="page-link" th:unless="${currentPage > 1}">Previous</span>
+                </li>
+
+                <!--Part to rethink rebuild-->
+                <!--<li class="page-item">-->
+                <!--<span th:each="i: ${#numbers.sequence(1, totalPages)}">-->
+                <!--<a class="page-link" th:if="${currentPage != i}"-->
+                <!--th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>-->
+                <!--<span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span></span>-->
+                <!--</li>-->
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Next</a>
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Next</span>
+                </li>
+
+                <li class="page-item">
+                    <a class="page-link" th:if="${currentPage < totalPages}"
+                       th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}" >Last</a>
+                    <span class="page-link" th:unless="${currentPage < totalPages}">Last</span>
+                </li>
+
+            </ul>
+        </nav>
     </div>
 
 <div th:replace="fragments/footer :: footer"></div>
