@@ -12,11 +12,9 @@
 
 	<properties>
 		<bootstrap.version>4.5.3</bootstrap.version>
-		<lombok.version>1.18.16</lombok.version>
 		<java.version>11</java.version>
 		<javax.servlet>2.5</javax.servlet>
-		<spring.data.jpa>2.4.1</spring.data.jpa>
-		<hibernate>5.4.26.Final</hibernate>
+		<hibernate>5.4.25.Final</hibernate>
 	</properties>
 
 	<!-- Inherit defaults from Spring Boot -->
@@ -60,7 +58,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -98,12 +95,12 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring.data.jpa}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
+			<artifactId>hibernate-agroal</artifactId>
 			<version>${hibernate}</version>
+			<type>pom</type>
 		</dependency>
 	</dependencies>
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import ro.zoltan.toth.fly_europe.domain.Airport;
 import ro.zoltan.toth.fly_europe.payload.AirportPayload;
 import ro.zoltan.toth.fly_europe.repository.AirportRepository;
-import ro.zoltan.toth.fly_europe.repository.CountryRepository;
 import ro.zoltan.toth.fly_europe.service.AirportService;
 
 @Service
@@ -18,8 +17,8 @@ public class AirportServiceImpl implements AirportService {
     @Autowired
     private AirportRepository airportRepository;
 
-    @Autowired
-    private CountryRepository countryRepository;
+//    @Autowired
+//    private CountryRepository countryRepository;
 
     @Override
     public Page<Airport> searchByCountry(int pageNum, String sortField, String sortDir, String keyword) {

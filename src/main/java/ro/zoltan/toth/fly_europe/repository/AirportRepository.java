@@ -25,4 +25,6 @@ public interface AirportRepository extends JpaRepository<Airport, Long> {
 
     Page<Airport> findAllByNameContainingOrCountryContainingOrCityContaining(String name, String country,
                                                                              String city, Pageable pageable);
+
+    //Stream<Airport> findAllByCriteria(String criteria, Airport airport);
 }

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ro.zoltan.toth.fly_europe.domain.Airport;
-import ro.zoltan.toth.fly_europe.repository.AirportRepository;
 import ro.zoltan.toth.fly_europe.service.AirportService;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class HomeController {
     @Autowired
     private AirportService airportService;
 
-    @Autowired
-    private AirportRepository airportRepository;
+//    @Autowired
+//    private AirportRepository airportRepository;
 
     @RequestMapping("/")
     public String viewHomePage(final Model model) {

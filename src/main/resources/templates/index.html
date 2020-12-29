@@ -53,7 +53,9 @@
                     <th>
                         <a th:href="@{'/page/' + ${currentPage} + '?sortField=iata&sortDir=' + ${reverseSortDir}}">IATA</a>
                     </th>
-                    <th sec:authorize="hasRole('administrator')">Actions</th>
+                    <th sec:authorize="hasRole('administrator')">
+                        <a>Actions</a>
+                    </th>
                 </tr>
             </thead>
             <tbody>
